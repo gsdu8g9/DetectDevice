@@ -1,4 +1,4 @@
-DetectDevice
+DetectDevice [![Build Status](https://travis-ci.org/Kocal/DetectDevice.png?branch=master)](https://travis-ci.org/Kocal/DetectDevice)
 ============
 
 DetectDevice is a little (~60 lines), simply, and functional PHP class which detect what kind of device is used to navigate on your website, a pc, a mobile, a tablet or a bot.
