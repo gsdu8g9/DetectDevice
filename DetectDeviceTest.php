@@ -10,6 +10,12 @@ class DetectDeviceTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testComputer() {
+        // Google Chrome 29 on Windows 8 x64
+        $this->device->setUserAgent("Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36");
+        $this->assertEquals(true, $this->device->isComputer());
+
+        // Mozilla Firefox 22 on Windows 8 x64
+        $this->device->setUserAgent("Mozilla/5.0 (Windows NT 6.2; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0");
         $this->assertEquals(true, $this->device->isComputer());
     }
 
