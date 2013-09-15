@@ -48,4 +48,24 @@ class DetectDeviceTest extends PHPUnit_Framework_TestCase {
         $this->device->setUserAgent("Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)");
         $this->assertEquals(true, $this->device->isBot());
     }
+
+    public function testConsole() {
+        // PS3
+        $this->device->setUserAgent("Mozilla/5.0 (PLAYSTATION 3; 3.55)");
+        $this->assertEquals(true, $this->device->isConsole());        
+
+        // XBox
+        $this->device->setUserAgent("Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)");
+        $this->assertEquals(true, $this->device->isConsole());
+    }
+
+    public function testIs() {
+        // Google Chrome
+        $this->device->setUserAgent("Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36");
+        $this->assertEquals(true, $this->device->is("chrome"));
+
+        // Nintendo DS
+        $this->device->setUserAgent("Mozilla/5.0 (Windows NT 6.2; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0");
+        $this->assertEquals(true, $this->device->is("firefox"));
+    }
 }
