@@ -57,7 +57,7 @@
         if(!$userAgent)
             $userAgent = $this->userAgent;
 
-        return preg_match('/' . $str . '/', $userAgent);
+        return preg_match('/' . $str . '/i', $userAgent);
     }
 
     public function getDeviceType() { return $this->deviceType; }
