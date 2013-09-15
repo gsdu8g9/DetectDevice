@@ -6,15 +6,17 @@
         "computer" => array("msie 10", "msie 9", "msie 8", "windows.*firefox", "windows.*chrome", "x11.*chrome", "x11.*firefox", "macintosh.*chrome", "macintosh.*firefox", "opera"),
         "tablet"   => array("tablet", "android", "ipad", "tablet.*firefox"),
         "mobile"   => array("mobile ", "android.*mobile", "iphone", "ipod", "opera mobi", "opera mini"),
-        "bot"      => array("googlebot", "mediapartners-google", "adsbot-google", "duckduckbot", "msnbot", "bingbot", "ask", "facebook", "yahoo", "addthis")
+        "bot"      => array("googlebot", "mediapartners-google", "adsbot-google", "duckduckbot", "msnbot", "bingbot", "ask", "facebook", "yahoo", "addthis"),
+        "console"  => array("ps2", "playstation", "xbox", "wii", "nintendo 3?ds")
     );
 
     private $deviceType = "";
 
     private $isComputer = false;
-    private $isMobile = false;
-    private $isTablet = false;
-    private $isBot = false;
+    private $isMobile   = false;
+    private $isTablet   = false;
+    private $isBot      = false;
+    private $isConsole  = false;
 
     public function __construct($userAgent = "") {
         if(!empty($userAgent))
@@ -51,9 +53,17 @@
         $this->isBot = false;
     }
 
+    public function is($str, $userAgent = null) {
+        if(!$userAgent)
+            $userAgent = $this->userAgent;
+
+        return preg_match('/' . $str . '/', $userAgent);
+    }
+
     public function getDeviceType() { return $this->deviceType; }
     public function isComputer()    { return $this->isComputer; }
     public function isMobile()      { return $this->isMobile; }
     public function isTablet()      { return $this->isTablet; }
     public function isBot()         { return $this->isBot; }
+    public function isConsole()     { return $this->isConsole; }
 }
