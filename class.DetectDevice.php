@@ -10,25 +10,26 @@
         "console"  => array("ps2", "playstation", "xbox", "wii", "nintendo 3?ds")
     );
 
+
     private $deviceType = "";
 
     private $isComputer = false;
-    private $isMobile   = false;
-    private $isTablet   = false;
-    private $isBot      = false;
-    private $isConsole  = false;
+    private $isMobile = false;
+    private $isTablet = false;
+    private $isBot = false;
+    private $isConsole = false;
 
     public function __construct($userAgent = "") {
         if(!empty($userAgent))
             $this->userAgent = $userAgent;
-        else 
+        else
             $this->userAgent = $_SERVER["HTTP_USER_AGENT"];
-  
+
         $this->detectDevice();
     }
 
     public function detectDevice() {
-        foreach($this->devices as $deviceType => $devices) {           
+        foreach($this->devices as $deviceType => $devices) {
             foreach($devices as $device) {
                 if(preg_match("/" . $device . "/i", $this->userAgent)) {
                     $this->deviceType = $deviceType;
@@ -54,8 +55,9 @@
     }
 
     public function is($str, $userAgent = null) {
-        if(!$userAgent)
+		if(!$userAgent) {
             $userAgent = $this->userAgent;
+		}
 
         return preg_match('/' . $str . '/i', $userAgent);
     }
