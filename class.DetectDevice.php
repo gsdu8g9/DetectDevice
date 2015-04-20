@@ -56,9 +56,9 @@
     }
 
     public function is($str, $userAgent = null) {
-		if(!$userAgent) {
+        if(!$userAgent) {
             $userAgent = $this->userAgent;
-		}
+        }
 
         return preg_match('/' . $str . '/i', $userAgent);
     }
